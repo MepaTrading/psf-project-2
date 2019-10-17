@@ -38,14 +38,13 @@ def simulate_rolling_avg_trading(df, ticker, rolling_window=7, gain=0.05, loss=0
 
         if prev_rolling > prev_normal and current_normal > prev_rolling:
             # buy
-            if wallet//current_normal == 0:
-                continue
-            buys+=1
-            stocks+=wallet//current_normal
-            wallet -= current_normal*stocks
-            stocks_value = stocks*current_normal
-            gain_diff = stocks_value*gain
-            loss_diff = -stocks_value*loss
+            if wallet//current_normal != 0:
+                buys+=1
+                stocks+=wallet//current_normal
+                wallet -= current_normal*stocks
+                stocks_value = stocks*current_normal
+                gain_diff = stocks_value*gain
+                loss_diff = -stocks_value*loss
 
         
         if prev_normal > prev_rolling and current_normal < current_rolling and stocks > 0:
@@ -58,7 +57,8 @@ def simulate_rolling_avg_trading(df, ticker, rolling_window=7, gain=0.05, loss=0
 
         if not sold:
             diff=0
-            sold=False
+        else:
+            sold = False
 
         temporal_series.append(diff)
 

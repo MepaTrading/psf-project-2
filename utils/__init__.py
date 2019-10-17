@@ -5,3 +5,4 @@ from .indexes import *
 from .scrap import *
 from .graph import *
 from .rolling_avg import *
+from .mcd_avg import *
