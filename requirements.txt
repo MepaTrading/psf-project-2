@@ -1,0 +1,7 @@
+plotly
+pandas-datareader
+jupyter
+matplotlib
+scipy
+bs4
+yfinance
