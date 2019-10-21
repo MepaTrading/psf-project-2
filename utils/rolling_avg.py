@@ -2,9 +2,6 @@ def simulate_rolling_avg_trading(df, ticker, rolling_window=7, gain=0.05, loss=0
     close_values = df[['Close']].reset_index().pivot('Date', 'Ticker', 'Close')[ticker]
     close_values_rolling = close_values.rolling(rolling_window).mean()
 
-    close_values[rolling_window:]
-    close_values_rolling[rolling_window:]
-
     prev_normal = close_values[0]
     prev_rolling = close_values_rolling[0]
 

@@ -6,3 +6,4 @@ from .scrap import *
 from .graph import *
 from .rolling_avg import *
 from .mcd_avg import *
+from .palex_9_1 import *

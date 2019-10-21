@@ -36,9 +36,6 @@ def simulate_macd_avg_trading(df, ticker, short_window=7, long_window=15, gain=0
     signal_values = macd(trades)['macd_signal_line']
     close_values = macd(trades)['Close']
 
-    signal_values[short_window:]
-    close_values_rolling[short_window:]
-
     prev_normal = signal_values[0]
     prev_rolling = close_values_rolling[0]
 
@@ -61,8 +58,6 @@ def simulate_macd_avg_trading(df, ticker, short_window=7, long_window=15, gain=0
         current_closing = close_values[t]
         current_rolling = close_values_rolling[t]
         diff = (stocks*current_closing) - stocks_value
-
-        print(stocks*current_closing, stocks_value)
 
         if (diff >= gain_diff or diff <= loss_diff) and stocks > 0:
             # sell
